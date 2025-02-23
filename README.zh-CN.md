@@ -6,14 +6,12 @@
   <p>基于 YOLOv8(v8.1.0) 的测试时适应改进方法</p>
 </div>
 
-
   <p align="center">
     <img src="https://img.shields.io/github/stars/LeafEvans/YOLOv8-TTA?style=social" alt="GitHub Stars">
     <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python Version">
     <img src="https://img.shields.io/badge/PyTorch-1.8+-red.svg" alt="PyTorch Version">
     <img src="https://img.shields.io/badge/License-AGPL--3.0-green.svg" alt="License">
   </p>
-
 
 [English](README.md) | 简体中文
 
@@ -77,6 +75,27 @@ results = model.train(
     tta=True,
     tta_params=tta_params
 )
+
+# 4. 预测
+results = model.predict(
+    source="images/",  # 图片路径、目录、URL、视频等
+    tta=True,         # 启用测试时适应
+    tta_params=tta_params,
+    conf=0.25,        # 置信度阈值
+    save=True         # 保存结果
+)
+
+# 5. 验证
+metrics = model.val(
+    data="data.yaml",
+    tta=True,
+    tta_params=tta_params,
+    batch=32
+)
+
+print(f"mAP50-95: {metrics.box.map}")    # 打印 mAP50-95
+print(f"mAP50: {metrics.box.map50}")     # 打印 mAP50
+print(f"mAP75: {metrics.box.map75}")     # 打印 mAP75
 ```
 
 ## 📊 性能对比

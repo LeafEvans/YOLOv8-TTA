@@ -6,15 +6,12 @@
   <p>Test-time Adaptation Improvements Based on YOLOv8(v8.1.0)</p>
 </div>
 
-
   <p align="center">
     <img src="https://img.shields.io/github/stars/LeafEvans/YOLOv8-TTA?style=social" alt="GitHub Stars">
     <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python Version">
     <img src="https://img.shields.io/badge/PyTorch-1.8+-red.svg" alt="PyTorch Version">
     <img src="https://img.shields.io/badge/License-AGPL--3.0-green.svg" alt="License">
   </p>
-
-
 
 English | [简体中文](README.zh-CN.md)
 
@@ -78,6 +75,27 @@ results = model.train(
     tta=True,
     tta_params=tta_params
 )
+
+# 4. Predict
+results = model.predict(
+    source="images/",  # Path to images, dir, URL, video, etc.
+    tta=True,         # Enable test-time adaptation
+    tta_params=tta_params,
+    conf=0.25,        # Confidence threshold
+    save=True         # Save results
+)
+
+# 5. Validate
+metrics = model.val(
+    data="data.yaml",
+    tta=True,
+    tta_params=tta_params,
+    batch=32
+)
+
+print(f"mAP50-95: {metrics.box.map}")    # Print mAP50-95
+print(f"mAP50: {metrics.box.map50}")     # Print mAP50
+print(f"mAP75: {metrics.box.map75}")     # Print mAP75
 ```
 
 ## 📊 Performance Comparison
@@ -161,4 +179,3 @@ This project is licensed under [AGPL-3.0](LICENSE).
 Developed based on YOLOv8(v8.1.0)<br>
 Author: LeafEvans
 </div>
-
