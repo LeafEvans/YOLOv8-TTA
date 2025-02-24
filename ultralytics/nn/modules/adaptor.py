@@ -1,32 +1,13 @@
 # Ultralytics YOLO 🚀, AGPL-3.0 license
-"""Lightweight neural network adaptor module for feature refinement."""
+"""Adaptor module."""
 
 import torch.nn as nn
 
+__all__ = "LightweightAdaptor"
+
 
 class LightweightAdaptor(nn.Module):
-    """A lightweight neural network adaptor module for feature refinement.
-
-    This module implements a lightweight adaptation mechanism that allows for feature refinement
-    while maintaining computational efficiency. It uses a bottleneck architecture with
-    channel reduction and projection.
-
-    Args:
-        in_channels (int): Number of input channels.
-        reduction_ratio (int, optional): Channel reduction ratio for the bottleneck.
-            Default is 32.
-        out_channels (int, optional): Number of output channels. If None, same as in_channels.
-
-    Attributes:
-        down_proj (nn.Conv2d): 1x1 convolution for channel reduction
-        act (nn.ReLU): ReLU activation function
-        up_proj (nn.Conv2d): 1x1 convolution for channel projection
-
-    Notes:
-        - The module uses residual connection (identity + transformation)
-        - Up projection weights are initialized to zero to start with identity mapping
-        - Channel reduction helps in reducing computational cost
-    """
+    """A lightweight neural network adaptor module for feature refinement."""
 
     def __init__(self, in_channels, reduction_ratio=32, out_channels=None):
         super().__init__()

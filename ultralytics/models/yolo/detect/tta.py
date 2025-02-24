@@ -3,8 +3,8 @@
 import torch
 from torch.distributions import Normal
 from ultralytics.nn.modules import Bottleneck
+from ultralytics.nn.modules import LightweightAdaptor
 from ultralytics.utils import LOGGER
-from ultralytics.nn.modules.adaptor import LightweightAdaptor
 
 
 class TTAStrategy:

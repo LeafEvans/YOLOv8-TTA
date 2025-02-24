@@ -17,6 +17,7 @@ Example:
     ```
 """
 
+from .adaptor import LightweightAdaptor
 from .block import (
     C1,
     C2,
@@ -114,4 +115,5 @@ __all__ = (
     "MLP",
     "ResNetLayer",
     "OBB",
+    "LightweightAdaptor",
 )
