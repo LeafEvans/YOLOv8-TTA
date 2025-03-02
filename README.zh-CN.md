@@ -7,7 +7,6 @@
 </div>
 
   <p align="center">
-    <img src="https://img.shields.io/github/stars/LeafEvans/YOLOv8-TTA?style=social" alt="GitHub Stars">
     <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python Version">
     <img src="https://img.shields.io/badge/PyTorch-1.8+-red.svg" alt="PyTorch Version">
     <img src="https://img.shields.io/badge/License-AGPL--3.0-green.svg" alt="License">
